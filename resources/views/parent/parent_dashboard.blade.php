@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #4a90e2, #9013fe);
+            background: url('{{ asset('images/homepage.jpeg') }}') no-repeat center center fixed; /* Set the background image */
+            background-size: cover; /* Cover the entire viewport */
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,7 +17,7 @@
             height: 100vh;
         }
         .container {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
             border-radius: 20px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             padding: 40px;
