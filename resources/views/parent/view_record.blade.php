@@ -7,8 +7,9 @@
     <style>
         /* General Styles */
         body {
+            background: url('{{ asset('images/report.jpeg') }}') no-repeat center center fixed;
+            background-size: cover;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #007bff, #00aaff); /* Blue gradient background */
             margin: 0;
             padding: 20px;
             color: #333;
