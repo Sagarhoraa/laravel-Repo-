@@ -8,7 +8,8 @@
         /* Body Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #007bff, #00aaff);
+            background: url('{{ asset('images/addchild.jpeg') }}') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -19,7 +20,7 @@
 
         /* Form Container */
         .form-container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             max-width: 900px;
@@ -67,6 +68,8 @@
             border-radius: 6px;
             box-sizing: border-box;
             transition: all 0.3s;
+            color: #333; /* Ensures text is visible */
+            background-color: #fff; /* Ensures background is white */
         }
 
         input:focus, select:focus {
@@ -135,14 +138,14 @@
 <body>
     <div class="form-container">
         @if ($errors->any())
-        <div class="notification" style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+            <div class="notification" style="color: red;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h2>Add Child</h2>
 
         @if(session('success'))
