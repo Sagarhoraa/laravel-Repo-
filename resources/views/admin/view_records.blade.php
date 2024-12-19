@@ -12,8 +12,9 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items: flex-start; /* Align items to the start to prevent centering */
+            min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+            overflow: auto; /* Enable scrolling if content overflows */
         }
         .container {
             background-color: #ffffff;
@@ -22,7 +23,7 @@
             padding: 50px;
             width: 90%;
             max-width: 1100px;
-            transition: transform 0.3s;
+            margin-top: 20px; /* Add margin to the top for spacing */
         }
         h2 {
             text-align: center;
@@ -89,6 +90,8 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Assuming server-side rendering with a templating engine -->
+                <!-- Replace with appropriate data binding syntax as needed -->
                 @if($children->count() > 0)
                     @foreach($children as $child)
                         <tr>
@@ -101,7 +104,15 @@
                             <td>{{ htmlspecialchars($child->c_height) }}</td>
                             <td>{{ htmlspecialchars($child->c_vaccine) }}</td>
                             <td>{{ htmlspecialchars($child->p_username) }}</td>
-                            <td>{{ $child->status ? 'Approved' : 'Pending' }}</td>
+                            <td>
+                                @if($child->status === 'approved')
+                                    Approved
+                                @elseif($child->status === 'rejected')
+                                    Rejected
+                                @else
+                                    Pending
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 @else
