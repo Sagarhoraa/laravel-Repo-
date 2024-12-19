@@ -3,25 +3,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\VaccineDate; // Assuming you have a VaccineSchedule model
+use App\Models\VaccineDate; 
+// Assuming you have a VaccineSchedule model
+use App\Models\Child;
 
 class ScheduleController extends Controller
 {
     public function viewSchedule(Request $request)
     {
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'You must be logged in to view this page.');
-        }
+        $username = $request->user()->name;  // Check if username is fetched correctly
+        \Log::info('Logged-in username: ' . $username);
     
-        $p_name = Auth::user()->name; // Get the logged-in parent's name
+        $schedules = Child::where('p_username', $username)
+                         ->whereIn('status', values: ['approved'])
+                         ->get();
     
-        // Fetch vaccine schedules for the logged-in parent
-        $schedules = VaccineDate::where('p_username', $p_name)
-        ->whereIn('status', values: ['approved', 'pending','rejected'])
-         ->get();
+        // Log the children fetched
+        \Log::info('Fetched children: ' . $schedules);
     
-        return view('parent.view_schedule',[
-        'schedules'=>$schedules,
+        return view('parent.view_schedule', [
+            'schedules' => $schedules,
+            'p_name' => $request->user()->name,
         ]);
     }
 }
