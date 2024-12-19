@@ -83,8 +83,7 @@
                 <th>Child Name</th>
                 <th>Parent Username</th>
                 <th>Vaccine Name</th>
-                <th>Date</th>
-                <th>Timing</th>
+                <th>Date</th>               
                 <th>Status</th>
             </tr>
             @if($schedules->count() > 0)
@@ -92,10 +91,9 @@
                     <tr>
                         <td>{{ htmlspecialchars($schedule->c_name) }}</td>
                         <td>{{ htmlspecialchars($schedule->p_username) }}</td>
-                        <td>{{ htmlspecialchars($schedule->name) }}</td>
-                        <td>{{ htmlspecialchars($schedule->v_date) }}</td>
-                        <td>{{ htmlspecialchars($schedule->timing) }}</td>
-                        <td>{{ htmlspecialchars($schedule->status) }}</td>
+                        <td>{{ htmlspecialchars($schedule->c_vaccine) }}</td>
+                        <td>{{ htmlspecialchars($schedule->scheduled_date) }}</td>                      
+                        <td>{{ htmlspecialchars('pending') }}</td>
                     </tr>
                 @endforeach
             @else
