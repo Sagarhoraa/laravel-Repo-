@@ -9,7 +9,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AdminController;
 
 
-
+//-----this route is for user , welcome page --it redirect to welcome at begining --
 Route::get('/', function () {
     return view('welcome');
     });
@@ -68,7 +68,7 @@ Route::get('/admindashboard', function () {
     ->name('admindashboard');
 
 
-
+//--this route  redirect user to allocate_vaccine page in the admin page...//
 Route::get('/allocatevaccineform', function () {
     return view('admin.allocate_vaccine');
     })->middleware(['auth', 'verified'])
