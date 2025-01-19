@@ -93,6 +93,8 @@
 </head>
 <body>
     <div class="container">
+    
+        <img href="./images1.jpg" alt="vaccine-image">
         <h1>Parent Dashboard</h1>
         <div class="link-container">
             <a href="{{ route('addchild') }}" id="add">Enter Child Details</a>
