@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+//using models ->child model , model knowns for database table  name in database 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
